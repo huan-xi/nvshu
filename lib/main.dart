@@ -11,7 +11,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '掌上女书',
-      theme: ThemeData(primaryColor: GlobalConfig.color),
+      theme: ThemeData(
+          primaryColor: GlobalConfig.color,
+          accentColor: GlobalConfig.color,
+      textTheme: TextTheme(
+        display1: TextStyle(color: GlobalConfig.color),
+      )),
       home: TabNavigator(),
       routes: <String, WidgetBuilder>{
         'login': (BuildContext context) => LoginPage()

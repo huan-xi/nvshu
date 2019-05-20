@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nvshu/widget/input.dart';
+import 'package:nvshu/widget/third_party_login.dart';
 
 import '../config.dart';
 
@@ -10,8 +12,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Stack(
+    return Scaffold(
+      body: Stack(
         children: <Widget>[
           Container(
             alignment: FractionalOffset.bottomRight,
@@ -41,14 +43,23 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 child: Text("欢迎来到掌上女书",
                   style:TextStyle(
-                    color: GlobalConfig.color
-                  ),),
-              )
+                    fontSize: 30,
+                    color: GlobalConfig.color,
+                    decoration: TextDecoration.none,
+                  ),
+                ),
+              ),
+              Input(hintText: "手机号码",inputType: InputType.phone),
+              Input(hintText: "短信验证码",inputType: InputType.code),
+              ThirdPartyLogin(),
+              Container(child: Row(children: <Widget>[
+                Text("登入代表您已经同意"),
+                Text("《掌上女书用户协议》")
+              ],))
             ],
           )
         ],
       ),
-      color: GlobalConfig.colorBackground,
     );
   }
 }
