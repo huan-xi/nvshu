@@ -112,9 +112,54 @@ class CaptchaButton extends StatefulWidget {
   _CaptchaButtonState createState() => _CaptchaButtonState();
 }
 
-class _CaptchaButtonState extends State<CaptchaButton> {
+class _CaptchaButtonState extends State<CaptchaButton>
+    with SingleTickerProviderStateMixin {
+  AnimationController _controller;
+  Animation<double> animation;
+  final int waitSecond = 120; //等待时间
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _controller = AnimationController(
+        duration: Duration(seconds: waitSecond), vsync: this)
+    ..addListener((){
+//      print(animation.value);
+    })
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          print("动画完成！");
+        }
+      });
+    animation = Tween(begin: waitSecond, end: 0).animate(_controller);
+    _controller.reset();
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    return AnimatedCaptcha(
+      animation: animation,
+
+    );
+  }
+}
+
+class AnimatedCaptcha extends AnimatedWidget {
+  AnimatedCaptcha({Key key, Animation<double> animation})
+      : super(key: key, listenable: animation);
+
+  @override
+  Widget build(BuildContext context) {
+    final Animation<double> animation = listenable;
+    // TODO: implement build
     return Container(
       width: 115,
       height: 36,
@@ -126,9 +171,11 @@ class _CaptchaButtonState extends State<CaptchaButton> {
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20))),
         color: GlobalConfig.colorBackground,
-        onPressed: () {},
+        onPressed: () {
+          print("开始");
+        },
         child: Text(
-          "获取验证码",
+          '${animation.value}获取验证码',
           style: TextStyle(fontSize: 14, color: Theme.of(context).primaryColor),
         ),
       ),
