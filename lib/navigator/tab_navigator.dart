@@ -8,6 +8,7 @@
  * http://coding.imooc.com/learn/qa/321.html
  */
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nvshu/pages/circle_page.dart';
 import 'package:nvshu/pages/home_page.dart';
 import 'package:nvshu/pages/index_page.dart';
@@ -30,6 +31,11 @@ class _TabNavigatorState extends State<TabNavigator> {
 
   @override
   Widget build(BuildContext context) {
+
+    //初始化屏幕尺寸
+    //一定要在home下
+    ScreenUtil.instance=ScreenUtil(width: 720,height: 1280)..init(context);
+
     return Scaffold(
       body: PageView(
         controller: _controller,

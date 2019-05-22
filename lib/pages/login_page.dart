@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nvshu/widget/input_widget.dart';
 import 'package:nvshu/widget/third_party_login.dart';
 
@@ -19,8 +20,8 @@ class _LoginPageState extends State<LoginPage> {
             alignment: FractionalOffset.bottomRight,
             child: Image.asset(
               "images/girl.png",
-              width: 127.5,
-              height: 156.5,
+              width: ScreenUtil().setWidth(255),
+              height: ScreenUtil().setHeight(313),
             ),
           ),
           Container(
@@ -34,7 +35,8 @@ class _LoginPageState extends State<LoginPage> {
           Column(
             children: <Widget>[
               Container(
-                padding: EdgeInsets.only(top: 100, left: 30, right: 35),
+                padding: EdgeInsets.only(top: ScreenUtil().setHeight(200), left: ScreenUtil().setWidth(52),
+                    right: ScreenUtil().setWidth(70)),
                 child: Column(
                   children: <Widget>[
                     Container(
@@ -53,12 +55,12 @@ class _LoginPageState extends State<LoginPage> {
                           Input(labelText: "输入手机号/电子邮箱注册", hintText: "输入手机号码"),
                     ),
                     Container(
-                        margin: EdgeInsets.only(top: 50),
+                        margin: EdgeInsets.only(top: ScreenUtil().setWidth(100)),
                         child: Row(
                           children: <Widget>[
                             Container(
-                              margin: EdgeInsets.only(right: 30),
-                              width: 200,
+                              margin: EdgeInsets.only(right: ScreenUtil().setWidth(21)),
+                              width: ScreenUtil().setWidth(350),
                               child: Input(
                                   hintText: "请输入验证码", labelText: "请输入验证码"),
                             ),
@@ -67,8 +69,8 @@ class _LoginPageState extends State<LoginPage> {
                         )),
                     Container(
                       constraints: BoxConstraints(minWidth: double.infinity),
-                      height: 45,
-                      margin: EdgeInsets.only(top: 73),
+                      height: ScreenUtil().setHeight(90),
+                      margin: EdgeInsets.only(top: ScreenUtil().setWidth(148)),
                       child: RaisedButton(
                         elevation: 0,
                         shape: RoundedRectangleBorder(
@@ -91,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Container(
                 margin: EdgeInsets.only(
-                  top: 186,
+                  top: ScreenUtil().setHeight(320),
                 ),
                 child: Text(
                   "已有账号，去登录>>",
@@ -115,15 +117,15 @@ class CaptchaButton extends StatefulWidget {
 class _CaptchaButtonState extends State<CaptchaButton>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
-  Animation<double> animation;
-  final int waitSecond = 120; //等待时间
+  Animation<double> animation;
+  final double waitSecond = 120; //等待时间
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _controller = AnimationController(
-        duration: Duration(seconds: waitSecond), vsync: this)
+        duration: Duration(seconds: 120), vsync: this)
     ..addListener((){
 //      print(animation.value);
     })
@@ -132,7 +134,7 @@ class _CaptchaButtonState extends State<CaptchaButton>
           print("动画完成！");
         }
       });
-    animation = Tween(begin: waitSecond, end: 0).animate(_controller);
+    animation = Tween(begin: waitSecond, end: 0.0).animate(_controller);
     _controller.reset();
     _controller.forward();
   }
@@ -161,8 +163,8 @@ class AnimatedCaptcha extends AnimatedWidget {
     final Animation<double> animation = listenable;
     // TODO: implement build
     return Container(
-      width: 115,
-      height: 36,
+      width: ScreenUtil().setWidth(227),
+      height: ScreenUtil().setHeight(72),
       decoration: BoxDecoration(
           border: Border.all(color: Theme.of(context).primaryColor),
           borderRadius: BorderRadius.all(Radius.circular(20))),
