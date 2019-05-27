@@ -23,7 +23,7 @@ class TabNavigator extends StatefulWidget {
 
 class _TabNavigatorState extends State<TabNavigator> {
   final _defaultColor = Colors.grey;
-  final _activeColor =GlobalConfig.color;
+  final _activeColor = GlobalConfig.color;
   int _currentIndex = 0;
   final PageController _controller = PageController(
     initialPage: 0,
@@ -31,10 +31,9 @@ class _TabNavigatorState extends State<TabNavigator> {
 
   @override
   Widget build(BuildContext context) {
-
     //初始化屏幕尺寸
     //一定要在home下
-    ScreenUtil.instance=ScreenUtil(width: 720,height: 1280)..init(context);
+    ScreenUtil.instance = ScreenUtil(width: 722, height: 1282)..init(context);
 
     return Scaffold(
       body: PageView(
@@ -57,28 +56,32 @@ class _TabNavigatorState extends State<TabNavigator> {
           },
           type: BottomNavigationBarType.fixed,
           items: [
-            _bottomItem('首页', Icons.home, 0),
-            _bottomItem('互动', Icons.message, 1),
-            _bottomItem('圈子', Icons.camera, 2),
-            _bottomItem('我的', Icons.account_circle, 3),
+            _bottomItem('首页', "home", 0),
+            _bottomItem('互动', "message", 1),
+            _bottomItem('圈子', "compass", 2),
+            _bottomItem('我的', "my", 3),
           ]),
     );
   }
 
-  _bottomItem(String title, IconData icon, int index) {
+  //下部导航
+  _bottomItem(String title, String icon, int index) {
     return BottomNavigationBarItem(
-        icon: Icon(
-          icon,
-          color: _defaultColor,
-        ),
-        activeIcon: Icon(
-          icon,
-          color: _activeColor,
-        ),
-        title: Text(
-          title,
-          style: TextStyle(
-              color: _currentIndex != index ? _defaultColor : _activeColor),
+        icon: Image.asset("images/icon/${icon}0.png",
+            width: ScreenUtil().setWidth(50),
+            height: ScreenUtil().setHeight(42)),
+        activeIcon: Image.asset("images/icon/${icon}1.png",
+            width: ScreenUtil().setWidth(50),
+            height: ScreenUtil().setHeight(42)),
+        title: Container(
+          child: Text(
+            title,
+            style: TextStyle(
+                color: _currentIndex != index ? _defaultColor : _activeColor,
+                fontWeight: FontWeight.w700,
+                fontSize: ScreenUtil().setSp(20)),
+          ),
+          margin: EdgeInsets.only(top: ScreenUtil().setHeight(6)),
         ));
   }
 }

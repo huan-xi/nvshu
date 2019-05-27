@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 enum InputType { phone, code, password }
 
@@ -24,10 +25,14 @@ class _InputState extends State<Input> {
       controller: _controller,
       onChanged: _onChanged,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.only(bottom: 8, left: 20, right: 15),
+        contentPadding: EdgeInsets.only(bottom: ScreenUtil().setHeight(11), left: ScreenUtil().setWidth(40), right: 15),
         labelText: widget.labelText,
+        /*labelStyle: TextStyle(fontSize: ScreenUtil().setSp(32),
+            color: Color(0xff9d9165)),*/
+
         hintText: widget.hintText,
-        hintStyle: TextStyle(fontSize: 15),
+        hintStyle: TextStyle(fontSize: ScreenUtil().setSp(32),
+            color: Color(0xff9d9165)),
         suffix: showClear
             ? _wrapTap(
                 Icon(Icons.cancel,

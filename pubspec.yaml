@@ -46,6 +46,27 @@ flutter:
   assets:
     - images/dot.png
     - images/girl.png
+    - images/banner.png
+    - images/icon/search.png
+    - images/icon/book.png
+    - images/icon/light.png
+    - images/icon/play.png
+    - images/icon/gift.png
+    - images/icon/dot0.png
+    - images/icon/dot1.png
+    - images/icon/dot2.png
+    - images/icon/calendar.png
+    - images/icon/game.png
+    - images/icon/home0.png
+    - images/icon/home1.png
+    - images/icon/message0.png
+    - images/icon/message1.png
+    - images/icon/compass0.png
+    - images/icon/compass1.png
+    - images/icon/my0.png
+    - images/icon/my1.png
+    - images/icon/download.png
+    - images/icon/calendar_icon.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

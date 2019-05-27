@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-
-enum SearchBarType { home, normal, homeLight }
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchBar extends StatefulWidget {
   final bool enabled;
   final bool hideLeft;
-  final SearchBarType searchBarType;
   final String hint;
-  final String defaultText;
   final void Function() leftButtonClick;
   final void Function() rightButtonClick;
   final void Function() speakClick;
@@ -18,9 +15,7 @@ class SearchBar extends StatefulWidget {
       {Key key,
       this.enabled = true,
       this.hideLeft,
-      this.searchBarType = SearchBarType.normal,
       this.hint,
-      this.defaultText,
       this.leftButtonClick,
       this.rightButtonClick,
       this.speakClick,
@@ -38,118 +33,96 @@ class _SearchBarState extends State<SearchBar> {
 
   @override
   void initState() {
-    if (widget.defaultText != null) {
-      setState(() {
-        _controller.text = widget.defaultText;
-      });
-    }
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return widget.searchBarType == SearchBarType.normal
-        ? _genNormalSearch()
-        : _genHomeSearch();
-  }
-
-  _genNormalSearch() {
     return Container(
-      child: Row(children: <Widget>[
-        _wrapTap(
-            Container(
-              padding: EdgeInsets.fromLTRB(6, 5, 10, 5),
-              child: widget?.hideLeft ?? false
-                  ? null
-                  : Icon(
-                      Icons.arrow_back_ios,
-                      color: Colors.grey,
-                      size: 26,
-                    ),
-            ),
-            widget.leftButtonClick),
-        Expanded(
-          flex: 1,
-          child: _inputBox(),
-        ),
-        _wrapTap(
-            Container(
-              padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-              child: Text(
-                '搜索',
-                style: TextStyle(color: Colors.blue, fontSize: 17),
-              ),
-            ),
-            widget.rightButtonClick)
-      ]),
-    );
-  }
-
-  //首页搜索
-  _genHomeSearch() {
-    return Container(
-      margin: EdgeInsets.all(10),
-      child: _inputBox(),
+      margin: EdgeInsets.fromLTRB(ScreenUtil().setWidth(13),
+          ScreenUtil().setHeight(63), ScreenUtil().setHeight(13), 0),
+      padding: EdgeInsets.fromLTRB(
+          ScreenUtil().setWidth(31),
+          ScreenUtil().setHeight(15),
+          ScreenUtil().setWidth(31),
+          ScreenUtil().setHeight(15)),
+      decoration: BoxDecoration(
+          color: Colors.white, borderRadius: BorderRadius.circular(30)),
+      height: ScreenUtil().setHeight(70),
+      child: Row(
+        children: <Widget>[
+          Image.asset(
+            "images/icon/search.png",
+            width: ScreenUtil().setWidth(40),
+            height: ScreenUtil().setHeight(40),
+          ),
+          Expanded(
+              flex: 1,
+              child: Container(
+                child: TextField(
+                    controller: _controller,
+                    onChanged: _onChanged,
+                    autofocus: false,
+                    style: TextStyle(
+                        fontSize: 18.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w300),
+                    cursorColor: Colors.grey,
+                    //输入文本的样式
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.fromLTRB(
+                          ScreenUtil().setWidth(20),
+                          ScreenUtil().setWidth(0),
+                          ScreenUtil().setWidth(20),
+                          0),
+                      border: InputBorder.none,
+                      hintText: "请输入要查找的字或词",
+                      hintStyle: TextStyle(
+                          fontSize: ScreenUtil().setSp(24),
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w400),
+                    )),
+              )),
+        ],
+      ),
     );
   }
 
   _inputBox() {
-    Color inputBoxColor;
-    if (widget.searchBarType == SearchBarType.home) {
-      inputBoxColor = Colors.white;
-    } else {
-      inputBoxColor = Color(int.parse('0xffEDEDED'));
-    }
     return Container(
-      height: 30,
-      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+      margin: EdgeInsets.fromLTRB(ScreenUtil().setWidth(13),
+          ScreenUtil().setHeight(63), ScreenUtil().setHeight(13), 0),
       decoration: BoxDecoration(
-          color: inputBoxColor,
-          borderRadius: BorderRadius.circular(
-              widget.searchBarType == SearchBarType.normal ? 5 : 15)),
+          color: Colors.white, borderRadius: BorderRadius.circular(15)),
       child: Row(
         children: <Widget>[
           Icon(
             Icons.search,
             size: 20,
-            color: widget.searchBarType == SearchBarType.normal
-                ? Color(0xffA9A9A9)
-                : Colors.blue,
+            color: Color(0xffA9A9A9),
           ),
           Expanded(
               flex: 1,
-              child: widget.searchBarType == SearchBarType.normal
-                  ? TextField(
-                      controller: _controller,
-                      onChanged: _onChanged,
-                      autofocus: true,
-                      style: TextStyle(
-                          fontSize: 18.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w300),
-                      //输入文本的样式
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(5, 0, 5, 0),
-                        border: InputBorder.none,
-                        hintText: widget.hint ?? '',
-                        hintStyle: TextStyle(fontSize: 15),
-                      ))
-                  : _wrapTap(
-                      Container(
-                        child: Text(
-                          widget.defaultText,
-                          style: TextStyle(fontSize: 13, color: Colors.grey),
-                        ),
-                      ),
-                      widget.inputBoxClick)),
+              child: TextField(
+                  controller: _controller,
+                  onChanged: _onChanged,
+                  autofocus: true,
+                  style: TextStyle(
+                      fontSize: 18.0,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w300),
+                  //输入文本的样式
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: widget.hint ?? '',
+                    hintStyle: TextStyle(fontSize: 15),
+                  ))),
           !showClear
               ? _wrapTap(
                   Icon(
                     Icons.mic,
                     size: 22,
-                    color: widget.searchBarType == SearchBarType.normal
-                        ? Colors.blue
-                        : Colors.grey,
+                    color: Colors.grey,
                   ),
                   widget.speakClick)
               : _wrapTap(
@@ -190,11 +163,5 @@ class _SearchBarState extends State<SearchBar> {
     if (widget.onChanged != null) {
       widget.onChanged(text);
     }
-  }
-
-  _homeFontColor() {
-    return widget.searchBarType == SearchBarType.homeLight
-        ? Colors.black54
-        : Colors.white;
   }
 }
