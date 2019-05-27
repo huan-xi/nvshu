@@ -27,12 +27,9 @@ class _InputState extends State<Input> {
       decoration: InputDecoration(
         contentPadding: EdgeInsets.only(bottom: ScreenUtil().setHeight(11), left: ScreenUtil().setWidth(40), right: 15),
         labelText: widget.labelText,
-        /*labelStyle: TextStyle(fontSize: ScreenUtil().setSp(32),
-            color: Color(0xff9d9165)),*/
-
         hintText: widget.hintText,
         hintStyle: TextStyle(fontSize: ScreenUtil().setSp(32),
-            color: Color(0xff9d9165)),
+            color: Color(0xffc3c3c1)),
         suffix: showClear
             ? _wrapTap(
                 Icon(Icons.cancel,

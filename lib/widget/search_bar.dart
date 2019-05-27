@@ -64,10 +64,10 @@ class _SearchBarState extends State<SearchBar> {
                     onChanged: _onChanged,
                     autofocus: false,
                     style: TextStyle(
-                        fontSize: 18.0,
+                        fontSize:ScreenUtil().setSp(24),
                         color: Colors.black,
                         fontWeight: FontWeight.w300),
-                    cursorColor: Colors.grey,
+                    cursorColor: Color(0xffc3c3c1),
                     //输入文本的样式
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.fromLTRB(
@@ -79,7 +79,7 @@ class _SearchBarState extends State<SearchBar> {
                       hintText: "请输入要查找的字或词",
                       hintStyle: TextStyle(
                           fontSize: ScreenUtil().setSp(24),
-                          color: Colors.grey,
+                          color:Color(0xffc3c3c1),
                           fontWeight: FontWeight.w400),
                     )),
               )),

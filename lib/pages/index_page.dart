@@ -60,6 +60,28 @@ class _IndexPageState extends State<IndexPage> {
             Image.asset("images/banner.png"),
             SearchBar(
               leftButtonClick: () {},
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                  left: ScreenUtil().setWidth(295),
+                  top: ScreenUtil().setHeight(173)),
+              child: Text(
+                "一花一世界",
+                style: TextStyle(fontSize: ScreenUtil().setSp(48),
+                color: Color(0xfff5f5f8),
+                fontWeight: FontWeight.w600),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                  left: ScreenUtil().setWidth(400),
+                  top: ScreenUtil().setHeight(255)),
+              child: Text(
+                "一起体验女书的世界",
+                style: TextStyle(fontSize: ScreenUtil().setSp(32),
+                    color: Color(0xfff5f5f8),
+                    fontWeight: FontWeight.w600),
+              ),
             )
           ],
         ),
@@ -192,37 +214,43 @@ class _IndexPageState extends State<IndexPage> {
                       ))
                 ],
               ),
-              _boxItem("http://ps5t8f9qs.bkt.clouddn.com/%E7%AC%AC%E4%B8%80%E5%BC%A0%E5%9B%BE%E7%89%87@2x.png",
+              _boxItem(
+                  "http://ps5t8f9qs.bkt.clouddn.com/%E7%AC%AC%E4%B8%80%E5%BC%A0%E5%9B%BE%E7%89%87@2x.png",
                   "学会用女书来说话",
                   "共21篇",
                   "推广",
                   "2019-07-19"),
               _line,
-              _boxItem("http://ps5t8f9qs.bkt.clouddn.com/%E7%AC%AC%E4%BA%8C%E5%BC%A0%E5%9B%BE%E7%89%87@2x.png",
+              _boxItem(
+                  "http://ps5t8f9qs.bkt.clouddn.com/%E7%AC%AC%E4%BA%8C%E5%BC%A0%E5%9B%BE%E7%89%87@2x.png",
                   "每天坚持5分钟，掌握女书基本词汇",
                   "",
                   "推广",
                   "2019-07-19"),
               _line,
-              _boxItem("http://ps5t8f9qs.bkt.clouddn.com/%E5%9B%BE%E5%B1%82-3@2x.png",
+              _boxItem(
+                  "http://ps5t8f9qs.bkt.clouddn.com/%E5%9B%BE%E5%B1%82-3@2x.png",
                   "天天看视频，快乐每一天",
                   "共33篇",
                   "推广",
                   "2019-07-20"),
               _line,
-              _boxItem("http://ps5t8f9qs.bkt.clouddn.com/%E5%9B%BE%E5%B1%82-2@2x.png",
+              _boxItem(
+                  "http://ps5t8f9qs.bkt.clouddn.com/%E5%9B%BE%E5%B1%82-2@2x.png",
                   "挑战自我，女神带你PK",
                   "",
                   "推广",
                   "2019-07-20"),
               _line,
-              _boxItem("http://ps5t8f9qs.bkt.clouddn.com/%E5%9B%BE%E5%B1%82-7@2x.png",
+              _boxItem(
+                  "http://ps5t8f9qs.bkt.clouddn.com/%E5%9B%BE%E5%B1%82-7@2x.png",
                   "学女书要从娃娃抓起",
                   "共7篇",
                   "推广",
                   "2019-06-20"),
               _line,
-              _boxItem("http://ps5t8f9qs.bkt.clouddn.com/%E5%9B%BE%E5%B1%82-8@2x.png",
+              _boxItem(
+                  "http://ps5t8f9qs.bkt.clouddn.com/%E5%9B%BE%E5%B1%82-8@2x.png",
                   "日常口语，你会了吗",
                   "共120篇",
                   "推广",
@@ -339,7 +367,7 @@ class _IndexPageState extends State<IndexPage> {
     return Container(
       width: ScreenUtil().setWidth(682),
       height: ScreenUtil().setHeight(2),
-      color: Color(0x90BAB792),
+      color: Color(0x33BAB792),
     );
   }
 
@@ -368,17 +396,20 @@ class _IndexPageState extends State<IndexPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      title,
-                      style: TextStyle(
-                          color: Color(0xff211f19),
-                          fontWeight: FontWeight.w600,
-                          fontSize: ScreenUtil().setSp(24)),
+                    Container(
+                      child: Text(
+                        title,
+                        style: TextStyle(
+                            color: Color(0xff211f19),
+                            fontWeight: FontWeight.w600,
+                            fontSize: ScreenUtil().setSp(24)),
+                      ),
+                      margin: EdgeInsets.only(top: ScreenUtil().setHeight(20)),
                     ),
                     Container(
                       margin: EdgeInsets.only(
-                          top: ScreenUtil().setHeight(28),
-                          bottom: ScreenUtil().setHeight(28)),
+                          top: ScreenUtil().setHeight(20),
+                          bottom: ScreenUtil().setHeight(20)),
                       child: Text(
                         text1,
                         style: _textStyle,
