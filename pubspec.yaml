@@ -67,6 +67,9 @@ flutter:
     - images/icon/my1.png
     - images/icon/download.png
     - images/icon/calendar_icon.png
+    - images/icon/search2.png
+    - images/icon/setting.png
+    - images/icon/add.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
@@ -78,10 +81,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: nvshu
+      fonts:
+        - asset: fonts/nvshu.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

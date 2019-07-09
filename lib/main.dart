@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nvshu/pages/login_page.dart';
+import 'package:nvshu/pages/search_page.dart';
 
 import 'config.dart';
 import 'navigator/tab_navigator.dart';
@@ -21,7 +21,8 @@ class MyApp extends StatelessWidget {
       )),
       home: TabNavigator(),
       routes: <String, WidgetBuilder>{
-        'login': (BuildContext context) => LoginPage()
+        'login': (BuildContext context) => LoginPage(),
+        'search':(BuildContext context) => SearchPage()
       },
     );
   }

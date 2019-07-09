@@ -58,8 +58,20 @@ class _IndexPageState extends State<IndexPage> {
         Stack(
           children: <Widget>[
             Image.asset("images/banner.png"),
-            SearchBar(
-              leftButtonClick: () {},
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SearchBar(
+                    type: SearchBarType.home,
+                    inputBoxClick: (){
+                      print("test");
+                      Navigator.pushNamed(context, 'search');
+                    },
+                  ),
+                ),
+              ),
             ),
             Container(
               margin: EdgeInsets.only(
