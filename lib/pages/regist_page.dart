@@ -194,3 +194,59 @@ class _CaptchaButtonState extends State<CaptchaButton> {
   }
 }
 
+/*class AnimatedCaptcha extends AnimatedWidget {
+  final AnimationController controller;
+  bool _pressed = false;
+
+  AnimatedCaptcha({Key key, Animation<int> animation, this.controller})
+      : super(key: key, listenable: animation) {
+    controller.addStatusListener((status) {
+      print(status);
+
+      if (status == AnimationStatus.completed) {
+        _pressed = false;
+      } else if (status == AnimationStatus.forward) {
+        _pressed = true;
+      } else if (status == AnimationStatus.dismissed) {
+        controller.forward();
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final Animation<int> animation = listenable;
+    // TODO: implement build
+    return Container(
+      width: ScreenUtil().setWidth(227),
+      height: ScreenUtil().setHeight(72),
+      decoration: BoxDecoration(
+          border: Border.all(color: Theme.of(context).primaryColor),
+          borderRadius: BorderRadius.all(Radius.circular(20))),
+      child: RaisedButton(
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20))),
+        color: GlobalConfig.colorBackground,
+        disabledColor: GlobalConfig.colorBackground,
+        onPressed: _pressed
+            ? null
+            : () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return new SimpleDialog(
+                        title: Text("提示"),
+                      );
+                    });
+                controller.reset();
+                controller.forward();
+              },
+        child: Text(
+          _pressed ? '${animation.value}s后重新获取' : '获取验证码',
+          style: TextStyle(fontSize: 14, color: Theme.of(context).primaryColor),
+        ),
+      ),
+    );
+  }
+}*/

@@ -66,7 +66,7 @@ class HomePage extends StatelessWidget {
                       children: <Widget>[
                         Image(
                           image: CachedNetworkImageProvider(
-                              "http://ps5t8f9qs.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720190530180901@2x.png"),
+                              "http://file.huanxi.life:86/upload/fadsfsad.png"),
                           width: ScreenUtil().setHeight(145),
                           height: ScreenUtil().setHeight(145),
                         ),

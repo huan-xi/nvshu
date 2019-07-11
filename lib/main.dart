@@ -4,7 +4,6 @@ import 'package:nvshu/pages/search_page.dart';
 
 import 'config.dart';
 import 'navigator/tab_navigator.dart';
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {

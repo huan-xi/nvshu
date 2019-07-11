@@ -1,4 +1,4 @@
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,7 +12,12 @@ class _CirclePageState extends State<CirclePage> {
   Widget build(BuildContext context) {
     return Container(
       height: ScreenUtil().setHeight(720),
-      child: Text("this is circle page"),
+      child: Image(
+        image: CachedNetworkImageProvider(
+            "http://file.huanxi.life:86/upload/fadsfsad.png"),
+        width: ScreenUtil().setHeight(145),
+        height: ScreenUtil().setHeight(145),
+      ),
     );
   }
 }
