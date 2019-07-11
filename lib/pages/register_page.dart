@@ -8,14 +8,15 @@ import 'package:nvshu/widget/third_party_login.dart';
 
 import '../config.dart';
 
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   String username;
   String password;
+  String aPassword;
 
   @override
   Widget build(BuildContext context) {
@@ -58,14 +59,14 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         )),
                     Input(
-                      labelText: "输入 手机号/电子邮箱登入",
-                      hintText: "输入 手机号/电子邮箱登入",
+                      labelText: "输入 手机号/电子邮箱注册",
+                      hintText: "输入 手机号/电子邮箱注册",
                       onChange: (value) {
                         this.username = value;
                       },
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: _height(100)),
+                      margin: EdgeInsets.only(top: _height(50)),
                       child: Input(
                         hintText: "请输入密码",
                         labelText: "请输入密码",
@@ -74,13 +75,29 @@ class _LoginPageState extends State<LoginPage> {
                         },
                       ),
                     ),
-                    _button("登入", () {
+                    Container(
+                      margin: EdgeInsets.only(top: _height(50)),
+                      child: Input(
+                        hintText: "请确认密码",
+                        labelText: "请确认密码",
+                        onChange: (value) {
+                          this.aPassword = value;
+                        },
+                      ),
+                    ),
+                    _button("立即注册", () {
                       if (!(username != null && username.isNotEmpty)) {
                         _showDialog("请输入正确的手机号码");
                         return;
                       }
+
                       if (!(password != null && password.length > 3)) {
                         _showDialog("请输入正确的密码");
+                        return;
+                      }
+
+                      if (!(aPassword != null && password == aPassword)) {
+                        _showDialog("两次输入的密码不一样");
                         return;
                       }
                     }),
@@ -89,18 +106,18 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Container(
                 margin: EdgeInsets.only(
-                  top: ScreenUtil().setHeight(300),
+                  top: ScreenUtil().setHeight(200),
                 ),
                 child: GestureDetector(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      "还没有账号？去注册>>",
+                      "已有账号？去登入>>",
                       style: TextStyle(color: Theme.of(context).primaryColor),
                     ),
                   ),
                   onTap: () {
-                    Navigator.pushNamed(context, 'register');
+                    Navigator.pop(context);
                   },
                 ),
               )

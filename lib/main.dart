@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nvshu/pages/login_page.dart';
+import 'package:nvshu/pages/register_page.dart';
 import 'package:nvshu/pages/search_page.dart';
 
 import 'config.dart';
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
       home: TabNavigator(),
       routes: <String, WidgetBuilder>{
         'login': (BuildContext context) => LoginPage(),
-        'search':(BuildContext context) => SearchPage()
+        'search':(BuildContext context) => SearchPage(),
+        'register':(BuildContext context) => RegisterPage(),
       },
     );
   }

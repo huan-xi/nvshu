@@ -88,6 +88,9 @@ class _SearchBarState extends State<SearchBar> {
   }
 
   _onChanged(String text) {
+    widget.onChanged(text);
+    print(text);
+
     if (text.length > 0) {
       setState(() {
         showClear = true;

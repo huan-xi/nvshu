@@ -6,9 +6,9 @@ enum InputType { phone, code, password }
 class Input extends StatefulWidget {
   final String hintText;
   final String labelText;
-
+  final onChange;
   final InputType inputType;
-  Input({Key key, this.hintText, this.inputType, this.labelText});
+  Input({Key key, this.hintText, this.inputType, this.labelText,this.onChange});
 
   @override
   _InputState createState() => _InputState();
@@ -44,6 +44,7 @@ class _InputState extends State<Input> {
     );
   }
   _onChanged(String text) {
+    widget.onChange(text);
     if (text.length > 0) {
       setState(() {
         showClear = true;

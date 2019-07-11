@@ -16,6 +16,7 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
+    String text="";
     return Scaffold(
       backgroundColor: Color(0xfff6f6f6),
       body: Column(
@@ -25,6 +26,11 @@ class _SearchPageState extends State<SearchPage> {
             child: SearchBar(
               type: SearchBarType.normal,
               leftButtonClick: () {},
+              onChanged: (value) {
+                setState(() {
+                  text=value;
+                });
+              },
             ),
           ),
           Container(
@@ -48,7 +54,7 @@ class _SearchPageState extends State<SearchPage> {
               Row(
                 children: <Widget>[
                   Text(
-                    "天",
+                    text,
                     style: TextStyle(
                         fontSize: ScreenUtil().setSp(121), fontFamily: "nvshu"),
                   ),
